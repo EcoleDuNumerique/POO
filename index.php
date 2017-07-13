@@ -1,20 +1,19 @@
 <?php
 require_once "Stylo.php";
 
-$stylo1 = new Stylo(); //Nouvelle instance de Stylo !
-$stylo1->couleur = "green"; //Change les propriétés !
-$stylo1->marque = "arial";
+$stylo1 = new Stylo("arial", "green"); //Nouvelle instance de Stylo !
 
-$stylo2 = new Stylo(); //Nouvelle instance de Stylo !
-$stylo2->couleur = "red";
-$stylo2->marque = "courrier";
+$stylo2 = new Stylo("courrier", "red"); //Nouvelle instance de Stylo !
+
+$stylo3 = new Stylo("arial", "yellow");
+$stylo3->couleur = "blue";
 
 // echo "<pre>";
 // var_dump( $bic );
 // var_dump( $boss );
 // echo "</pre>";
 
-$stylo1->ecrire( "Je suis le " . $stylo1->marque );
+$stylo1->ecrireItalic( "Je suis le " . $stylo1->marque );
 $stylo2->ecrire( "Je suis le " . $stylo2->marque );
 
-$stylo1->ecrire( "zeifjo apojdpoe jfoaij fajf ao" );
+$stylo3->ecrire( "zeifjo apojdpoe jfoaij fajf ao" );
