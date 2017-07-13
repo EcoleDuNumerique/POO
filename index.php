@@ -8,15 +8,14 @@ $stylo1 = new Stylo("arial", "green"); //Nouvelle instance de Stylo !
 $stylo2 = new Stylo("courrier", "red"); //Nouvelle instance de Stylo !
 
 $stylo3 = new Stylo("arial", "yellow");
-$stylo3->couleur = "blue";
 
 // echo "<pre>";
 // var_dump( $bic );
 // var_dump( $boss );
 // echo "</pre>";
 
-$stylo1->ecrireItalic( "Je suis le " . $stylo1->marque );
-$stylo2->ecrire( "Je suis le " . $stylo2->marque );
+$stylo1->ecrireItalic( "Je suis le " . $stylo1->getMarque() );
+$stylo2->ecrire( "Je suis le " . $stylo2->getMarque() );
 
 $stylo3->ecrire( "zeifjo apojdpoe jfoaij fajf ao" );
 
@@ -26,8 +25,10 @@ $stylo1->setCouleur("red");
 
 /*  ----- Users ------- */
 
-$user = new User("pierre.mar@lidem.eu", "monpass");
+$user = new User("pierre@lidem.eu", "monpass");
 $user->inscription(); //On insère cet utilisateur dans la base de donnée
+$user->login();
+
 
 
 /* ------ Distributeur -------- */
@@ -42,6 +43,3 @@ $distributeur->acheter(1.80);
 echo "<p>".$distributeur->getMonnaie(9876)."</p>";
 $distributeur->addMonnaie(9876, 30);
 echo "<p>".$distributeur->getMonnaie(9876)."</p>";
-
-$distributeur->exterieur();
-
