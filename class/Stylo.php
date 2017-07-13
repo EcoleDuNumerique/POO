@@ -1,9 +1,28 @@
 <?php
 class Stylo { //Nom de la classe (Stylo)
 
-    public $marque; //propriété | attribut
-    public $couleur; //propriété | attribut
+    private $marque; //propriété | attribut
+    private $couleur; //propriété | attribut
 
+    /*** GETTER ***/
+    public function getMarque(){
+        return $this->marque;
+    }
+
+    public function getCouleur(){
+        return $this->couleur;
+    }
+
+    /*** SETTER ***/
+    public function setMarque($marque){
+        $this->marque = $marque;
+    }
+
+    public function setCouleur($couleur){
+        $this->couleur = $couleur;
+    }
+
+    
     public function __construct($marque, $couleur){ //lié a 'new'
         $this->marque = $marque;
         $this->couleur = $couleur;
