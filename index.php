@@ -3,11 +3,11 @@ require_once "Stylo.php";
 
 $stylo1 = new Stylo(); //Nouvelle instance de Stylo !
 $stylo1->couleur = "green"; //Change les propriétés !
-$stylo1->marque = "super bic";
+$stylo1->marque = "arial";
 
 $stylo2 = new Stylo(); //Nouvelle instance de Stylo !
 $stylo2->couleur = "red";
-$stylo2->marque = "boss";
+$stylo2->marque = "courrier";
 
 // echo "<pre>";
 // var_dump( $bic );

@@ -5,7 +5,9 @@ class Stylo { //Nom de la classe (Stylo)
     public $couleur; //propriété | attribut
 
     public function ecrire($message) { //méthode
-        echo "<p style='color:" . $this->couleur . "' >" . $message . "</p>";
+        echo "<p style='color:" . $this->couleur . "; font-family:" . $this->marque . "' >" 
+        . $message 
+        . "</p>";
     }
 
 
