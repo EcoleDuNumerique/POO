@@ -8,7 +8,7 @@ class Personnage {
     public $power;
     public $place;
     
-    public function __construct($name, $health = 5, $power = 5, $place = "Perpignan"){
+    public function __construct($name, $health = 10, $power = 1, $place = "Perpignan"){
 
         $this->name = $name;
         $this->health = $health;
@@ -24,15 +24,15 @@ class Personnage {
 
     public function attack( Personnage $target ){ //On oblige $target a être un Personnage
         if( $this->place == $target->place ){
-            $target->isHit( $this->power );
             echo "<p>" . $this->name . " attaque " . $target->name . "</p>";
+            $target->isHit( $this->power );
         }
         else {
             echo "<p>" . $target->name . " est trop loin !" . "</p>";
         }
     }
 
-    public function isHit( $damage ){
+    private function isHit( $damage ){
         $this->health -= $damage;
         echo "<p> Il reste " . $this->health . " à " . $this->name . "</p>";
     }
