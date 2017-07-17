@@ -32,7 +32,7 @@ class Personnage {
         }
     }
 
-    private function isHit( $damage ){
+    protected function isHit( $damage ){
         $this->health -= $damage;
         echo "<p> Il reste " . $this->health . " à " . $this->name . "</p>";
     }
