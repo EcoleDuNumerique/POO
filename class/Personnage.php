@@ -37,4 +37,9 @@ class Personnage {
         echo "<p> Il reste " . $this->health . " à " . $this->name . "</p>";
     }
 
+    protected function isHeal( $power ){
+        $this->health += $power;
+         echo "<p> Il reste " . $this->health . " à " . $this->name . "</p>";
+    }
+
 }

@@ -2,6 +2,7 @@
 require "class/Personnage.php";
 require "class/Rodeur.php";
 require "class/Messager.php";
+require "class/Soigneur.php";
 
 $pierre = new Personnage("Pierre");
 $pierre->move("Paris");
@@ -14,3 +15,6 @@ $thomas->setSecret(" Pierre va à Narbonne ");
 $thomas->deliverMessage( "Paris" );
 
 $thomas->attack($pierre);
+
+$fred = new Soigneur("Frederic");
+$fred->heal($pierre);
