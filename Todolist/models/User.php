@@ -89,7 +89,29 @@ class User {
 
     public function getNotes(){
         //Renvoie une liste de note
-        // [ Note ]
+        
+        $pdo = getBdd();
+        $prepared = $pdo->prepare("SELECT * FROM note WHERE user_id=:user_id");
+        $prepared->execute(array(
+            "user_id" => $this->id
+        ));
+        $results = $prepared->fetchAll(PDO::FETCH_ASSOC);
+
+        $notes = array(); //Sera mon tableau d'Objet
+        foreach ( $results as $result ){
+
+            //On créer nos objet a partir du résultat de la requête
+            $note = new Note();
+            $note->id = $result["id"];
+            $note->title = $result["title"];
+            $note->description = $result["description"];
+            $note->user_id =  $result["user_id"];
+
+            array_push( $notes, $note );
+        }
+
+        return $notes;
+
     }
 
 

@@ -8,10 +8,26 @@ class Note {
     public $title;
     public $description;
 
-    public function __construct($user_id, $title, $description){
-        $this->user_id = $user_id;
-        $this->title = $title;
-        $this->description = $description;
+    public function __construct($id = 0){
+        $this->id = $id;
+        
+        if( $id > 0){
+            $this->getById();
+        }
+    }
+
+    public function getById(){
+
+        $pdo = getBdd();
+        $prepared = $pdo->prepare("SELECT * FROM note WHERE id=:id");
+        $prepared->execute(array(
+            "id" => $this->id
+        ));
+        $result = $prepared->fetch(PDO::FETCH_ASSOC);
+        $this->user_id = $result["user_id"];
+        $this->title = $result["title"];
+        $this->description = $result["description"];
+
     }
 
     public function create(){

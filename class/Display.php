@@ -13,29 +13,15 @@ class Display { //classe utilitaire
         echo "<p style='color: blue;'>" . $msg . "</p>";
     }
 
-}
-// ********************** 
-class Bdd {
-
-    private static $pdo = null;
-
-    public static function getBdd(){
-
-        if( self::$pdo == null ) {
-
-            self::$pdo = new PDO( "mysql:host=localhost;dbname=todolist", "root", "root");
-            self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            self::$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        
+    public static function debug( $value ){
+        echo "<pre>";
+        if( is_array( $value ) ){
+            print_r( $value );
         }
-        
-        return self::$pdo;
+        else {
+            var_dump( $value );
+        }
+        echo "</pre>";
     }
 
 }
-
-Bdd::getBdd();
-
-Bdd::getBdd();
-Bdd::getBdd();
-Bdd::getBdd();

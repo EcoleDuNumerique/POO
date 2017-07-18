@@ -20,6 +20,20 @@
 
     </form>
 
+    -----------
+
+    <?php
+    
+        $notes = $user->getNotes();
+        
+        foreach( $notes as $note ){
+            echo $note->title;
+            echo $note->description;
+            echo "<a href='index.php?page=noteupdate&noteid=".$note->id."' > Editer </a>";
+
+        }
+    
+    ?>
 
     
 </body>
