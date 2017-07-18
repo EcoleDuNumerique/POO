@@ -9,6 +9,18 @@
 <body>
 
     <h1> Page Profil </h1>
+
+    <h2> Welcome <?= $user->id; ?> </h2>
+
+    <form action="services/servicenote.php" method="POST">
+
+        <label>Titre</label>       <input type="text" name="title" /><br>
+        <label>Description</label> <textarea name="description"></textarea><br>
+        <input type="submit" value="Créer">
+
+    </form>
+
+
     
 </body>
 </html>

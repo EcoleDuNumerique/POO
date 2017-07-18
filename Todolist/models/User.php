@@ -1,12 +1,6 @@
 <?php
-/**/
-function getBdd(){
-    $pdo = new PDO( "mysql:host=localhost;dbname=todolist", "root", "root");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    return $pdo;
-}
-/**/
+require_once "functions.php";
+
 class User {
 
     public $id;
@@ -45,8 +39,7 @@ class User {
 
         // Vérifier l'existence de l'email dans la base de donnée
         if( $this->emailExist() ){
-            echo "<p> Cet email est déjà utilisé </p>";
-            return;
+            return false;
         }
             
         // Envoyer dans la base de donnée le nouvel utilisateur
@@ -60,6 +53,8 @@ class User {
         
         // Recuperer le $this->id
         $this->id = $pdo->lastInsertId();
+
+        return true;
 
     }
 
@@ -86,16 +81,17 @@ class User {
 
     }
 
-    public function writeToDo(){
-
-        // Ecrire une note dans la base de donnée
-
-    }
-
     public function logout(){
 
         //Coupe la SESSION
 
     }
+
+    public function getNotes(){
+        //Renvoie une liste de note
+        // [ Note ]
+    }
+
+
 
 }

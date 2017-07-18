@@ -1,10 +1,12 @@
 <?php
+require "class/Entrainable.php";
 require "class/Personnage.php";
 require "class/Rodeur.php";
 require "class/Messager.php";
 require "class/Soigneur.php";
 require "class/Archer.php";
 require "class/Chevalier.php";
+require "class/Capitaine.php";
 
 $pierre = new Personnage("Pierre");
 $pierre->move("Paris");
@@ -28,3 +30,6 @@ $flo->attack($pierre);
 $melvin = new Chevalier("Melvin");
 $melvin->setShield(0.5);
 $flo->attack($melvin);
+
+$stephane = new Capitaine("Stephane");
+$stephane->trainHero($fred);
