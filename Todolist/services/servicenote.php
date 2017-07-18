@@ -28,6 +28,18 @@ else if( isset($_POST["title"]) && isset($_POST["description"]) ) {
     header("Location: ../index.php?page=profil");
 
 }
+else if( isset($_GET["supprimer"]) && isset($_GET["noteid"])){
+
+    $id = $_GET["noteid"];
+    $note = new Note( $id );
+    //$note = new Note("", "", "");
+    //$note->id = $id
+
+    $note->delete();
+
+    header("Location: ../index.php?page=profil");
+
+}
 else {
     header("Location: ../index.php?message=Formulaire imcomplet !");
 }

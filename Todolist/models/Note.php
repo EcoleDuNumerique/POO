@@ -7,6 +7,7 @@ class Note {
     public $user_id;
     public $title;
     public $description;
+    public $state;
 
     public function __construct($id = 0){
         $this->id = $id;
@@ -60,7 +61,7 @@ class Note {
     public function delete(){
 
         $pdo = getBdd();
-        $prepared = $pdo->prepare( "DELETE note WHERE id=:id" );
+        $prepared = $pdo->prepare( "DELETE FROM note WHERE id=:id" );
         $prepared->execute(array(
             'id' => $this->id
         ));

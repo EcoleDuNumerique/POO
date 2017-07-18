@@ -21,18 +21,19 @@
     </form>
 
     -----------
-
+    <ul>
     <?php
-    
-        $notes = $user->getNotes();
-        
+        $notes = $user->getNotes();    
         foreach( $notes as $note ){
-            echo $note->title;
-            echo $note->description;
-            echo "<a href='index.php?page=noteupdate&noteid=".$note->id."' > Editer </a>";
-
+    ?>
+        <li>
+            <h4> <?= $note->title ?> </h4>
+            <p> <?= $note->description ?> </p>
+            <a href='index.php?page=noteupdate&noteid=<?= $note->id ?>' > Editer </a>
+            <a href='services/servicenote.php?supprimer=1&noteid=<?= $note->id ?>' > Supprimer </a>
+        </li>
+    <?php
         }
-    
     ?>
 
     

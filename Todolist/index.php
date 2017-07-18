@@ -5,8 +5,15 @@ require "models/User.php";
 
 session_start();
 
+$autorisation = false;
 if(isset($_SESSION["user"])){
     $user = $_SESSION["user"];
+
+    if($user->isAdmin()){
+        include "views/admin.php";
+        $autorisation = true;
+    }
+
 }
 
 readMessage();
@@ -29,6 +36,12 @@ switch( readPage() ) {
         //$note->getById();
         include "views/noteupdate.php";
         break;
+
+    case "users":
+        if($autorisation) {
+            include "views/users.php";
+            break;
+        }
 
     case "connection":
         include "views/connection.php";

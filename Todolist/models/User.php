@@ -7,13 +7,35 @@ class User {
     public $username;
     public $email;
     private $password;
+    private $is_admin;
 
-    public function __construct( $email, $password, $username = "" ){
+    public function __construct( $email, $password, $username = "", $is_admin = false ){
 
         $this->email = $email;
         $this->password = sha1($password);
         $this->username = $username;
+        $this->is_admin = $is_admin;
 
+    }
+
+    public function setAdmin( $level ){
+        if( $level != $this->is_admin) {
+
+            $this->is_admin = $level;
+
+            $pdo = getBdd();
+            $prepared = $pdo->prepare("UPDATE FROM user SET is_admin=:level WHERE id=:id");
+            $prepared->execute(array(
+                'level' => $level,
+                'id' => $this->id
+            ));
+
+            $this->setSession();
+        }
+    }
+
+    public function isAdmin(){
+        return $this->is_admin;
     }
 
     private function emailExist(){
@@ -68,9 +90,10 @@ class User {
 
                 $this->id = $userBdd["id"];
                 $this->username = $userBdd["username"];
+                $this->is_admin = $userBdd["is_admin"];
 
                 // Créer la SESSION
-                $_SESSION['user'] = $this;
+                $this->setSession();
                 return true;
             }
             else {
@@ -79,6 +102,10 @@ class User {
 
         }
 
+    }
+
+    private function setSession(){
+        $_SESSION['user'] = $this;
     }
 
     public function logout(){
@@ -114,6 +141,29 @@ class User {
 
     }
 
+    public static function getAll(){
+
+        $pdo = getBdd();
+        $prepared = $pdo->prepare("SELECT * FROM user");
+        $prepared->execute();
+        $results = $prepared->fetchAll(PDO::FETCH_ASSOC);
+
+        $users = array(); //Sera mon tableau d'Objet
+        foreach ( $results as $result ){
+
+            //On créer nos objet a partir du résultat de la requête
+            $user = new User("", "");
+            $user->id = $result["id"];
+            $user->email = $result["email"];
+            $user->username = $result["username"];
+            $user->is_admin =  $result["is_admin"];
+
+            array_push( $users, $user );
+        }
+
+        return $users;
+
+    }
 
 
 }
