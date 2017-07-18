@@ -1,5 +1,5 @@
 <?php
-class Personnage {
+abstract class Personnage {
 
     /* On peut utiliser protected qui agit comme un private mais est
     quand même accessible pour les sous-classes */
@@ -19,27 +19,27 @@ class Personnage {
 
     public function move( $place ){
         $this->place = $place;
-        echo "<p>".$this->name." se deplace vers ".$this->place."</p>";
+        Display::move( $this->name." se deplace vers ".$this->place );
     }
 
     public function attack( Personnage $target ){ //On oblige $target a être un Personnage
         if( $this->place == $target->place ){
-            echo "<p>" . $this->name . " attaque " . $target->name . "</p>";
+            Display::fight( $this->name . " attaque " . $target->name );
             $target->isHit( $this->power );
         }
         else {
-            echo "<p>" . $target->name . " est trop loin !" . "</p>";
+             Display::fight( $target->name . " est trop loin !" );
         }
     }
 
     protected function isHit( $damage ){
         $this->health -= $damage;
-        echo "<p> Il reste " . $this->health . " à " . $this->name . "</p>";
+        Display::fight(" Il reste " . $this->health . " à " . $this->name );
     }
 
     protected function isHeal( $power ){
         $this->health += $power;
-         echo "<p> Il reste " . $this->health . " à " . $this->name . "</p>";
+         Display::fight( " Il reste " . $this->health . " à " . $this->name );
     }
 
 }

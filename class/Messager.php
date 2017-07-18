@@ -9,7 +9,7 @@ class Messager extends Rodeur {
 
     public function deliverMessage($place){
         $this->run($place);
-        echo "<p>" . $this->name . " délivre le message : '" . $this->secret . "' </p>"; 
+        Display::move( $this->name . " délivre le message : '" . $this->secret . "'" ); 
     }
 
 }

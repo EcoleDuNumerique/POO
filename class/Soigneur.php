@@ -2,7 +2,7 @@
 class Soigneur extends Personnage implements Entrainable {
 
     public function heal(Personnage $target){
-        echo "<p>" . $this->name . " soigne " . $target->name . "</p>";
+        Display::fight( $this->name . " soigne " . $target->name );
         $target->isHeal( $this->power );
     }
 

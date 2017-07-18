@@ -3,7 +3,7 @@ class Capitaine extends Personnage {
 
     public function trainHero( Entrainable $hero ){
         $hero->train();
-        echo "<p>Entrainement</p>";
+        Display::training( "Entrainement" );
     }
 
 }
